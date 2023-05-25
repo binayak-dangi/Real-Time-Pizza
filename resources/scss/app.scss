@@ -1,94 +1,104 @@
-    @import './variables';
-    body {
-        font-family: 'lato', 'sans-serif';
-        -webkit-font-smoothing: antialiased;
-        color: $dark;
+@import './variables';
+@import'~noty/src/noty.scss';
+@import'~noty/src/themes/mint.scss';
+body {
+    font-family: 'lato', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    color: $dark;
+}
+
+// home
+nav li:last-child a {
+    background: $primary;
+    &:hover {
+        background: $primary-hover;
     }
-    
-    // home
-    nav li:last-child a {
+}
+
+nav li a {
+    transition: $smooth;
+    &:hover {
+        color: $primary
+    }
+}
+
+section.hero {
+    background: $secondary;
+}
+
+.size {
+    background: $secondary;
+}
+
+.add-to-cart {
+    border: 2px solid $primary;
+    color: $primary;
+    transition: $smooth;
+    &:hover {
         background: $primary;
-        &:hover {
-            background: $primary-hover;
-        }
+        border-color: $pure;
+        color: $pure;
     }
-    
-    nav li a {
-        transition: $smooth;
-        &:hover {
-            color: $primary
-        }
+    &:focus {
+        outline: none;
     }
-    
-    section.hero {
-        background: $secondary;
+}
+
+.btn-primary,
+button[type="submit"] {
+    background: $primary;
+    transition: $smooth;
+    &:hover {
+        background: $primary-hover;
     }
-    
-    .size {
-        background: $secondary;
+}
+
+// footer
+footer {
+    background-color: #f5f5f5;
+    padding: 2rem 0;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
     }
-    
-    .add-to-cart {
-        border: 2px solid $primary;
-        color: $primary;
-        transition: $smooth;
-        &:hover {
-            background: $primary;
-            border-color: $pure;
-            color: $pure;
-        }
-    }
-    
-    .btn-primary,
-    button[type="submit"] {
-        background: $primary;
-        transition: $smooth;
-        &:hover {
-            background: $primary-hover;
-        }
-    }
-    
-    // footer
-    footer {
-        background-color: #f5f5f5;
-        padding: 2rem 0;
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .row {
-            display: flex;
-            justify-content: space-between;
-            .col-sm {
-                flex: 1;
-                text-align: center;
-            }
-        }
-        .copyright {
+    .row {
+        display: flex;
+        justify-content: space-between;
+        .col-sm {
+            flex: 1;
             text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #999;
         }
     }
-    
-    // cart
-    section.cart {
-        background: $secondary;
-        .amount {
-            color: $primary;
-        }
+    .copyright {
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #999;
     }
-    
-    // login
-    section.login {
-        background: $secondary;
-        min-height: calc(100vh - 86px);
-    }
-    
-    .customize-text {
+}
+
+// cart
+section.cart {
+    background: $secondary;
+    .amount {
         color: $primary;
-        &:hover {
-            color: $primary-hover;
-        }
     }
+}
+
+// login
+section.login {
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+}
+
+.customize-text {
+    color: $primary;
+    &:hover {
+        color: $primary-hover;
+    }
+}
+
+.noty_theme__mint {
+    border-radius: 50px!important;
+    padding-left: 8px!important;
+}
