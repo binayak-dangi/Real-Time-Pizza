@@ -9,7 +9,8 @@
         "dev": "nodemon server.js",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npx mix watch",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "start": "node server.js"
     },
     "license": "MIT",
     "dependencies": {
@@ -20,6 +21,7 @@
         "@babel/preset-env": "^7.21.5",
         "add": "^2.0.6",
         "axios": "^1.4.0",
+        "bcrypt": "^5.1.0",
         "connect-mongo": "^4.6.0",
         "cross-env": "^7.0.3",
         "dotenv": "^16.0.3",
@@ -31,6 +33,9 @@
         "mongodb": "^4.1.0",
         "mongoose": "^6.9.0",
         "noty": "^3.2.0-beta-deprecated",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
+        "password": "^0.1.1",
         "postcss": "^8.2.15",
         "webpack-cli": "^5.1.1",
         "yarn": "^1.22.19"
@@ -41,5 +46,6 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.57.1",
         "sass-loader": "^12.1.0"
-    }
+    },
+    "keywords": []
 }

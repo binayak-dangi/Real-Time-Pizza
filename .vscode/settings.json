@@ -1,5 +1,6 @@
 {
-    "files.associations": {
-        "*.formatHtml": "ejs"
-    }
+  "files.associations": {
+    "*.formatHtml": "ejs"
+  },
+  "compile-hero.disable-compile-files-on-did-save-code": true
 }
