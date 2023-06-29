@@ -30,6 +30,7 @@
         "express-ejs-layouts": "^2.5.1",
         "express-flash": "^0.0.2",
         "express-session": "^1.17.3",
+        "moment": "^2.29.4",
         "mongodb": "^4.1.0",
         "mongoose": "^6.9.0",
         "noty": "^3.2.0-beta-deprecated",
@@ -37,6 +38,7 @@
         "passport-local": "^1.0.0",
         "password": "^0.1.1",
         "postcss": "^8.2.15",
+        "socket.io": "^4.7.1",
         "webpack-cli": "^5.1.1",
         "yarn": "^1.22.19"
     },

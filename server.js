@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const ejs = require("ejs");
 const path = require("path");
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false);
@@ -11,6 +11,7 @@ const session = require("express-session");
 const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo");
 const passport = require("passport");
+const Emitter = require('events')
 
 
 
@@ -32,10 +33,13 @@ mongoose.connect(url).then(() => {
 
 // session store
 let mongoStore = MongoDbStore.create({
-
     mongoUrl: url,
     // ttl: 14 * 24 * 60 * 60, // = 14 days. Default
 });
+
+// Event emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter', eventEmitter)
 
 // session config
 app.use(
@@ -55,7 +59,6 @@ app.use(passport.session())
 
 
 app.use(flash());
-
 // Assets
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
@@ -75,7 +78,26 @@ app.set("view engine", "ejs");
 
 // routes
 require("./routes/web")(app);
-
-app.listen(PORT, () => {
+app.use((req, res) => {
+    res.status(404).render('errors/404')
+})
+const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
+
+// Socket
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+    // Join
+    socket.on('join', (orderId) => {
+        socket.join(orderId)
+    })
+})
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
+})
